@@ -21,3 +21,5 @@ Chương 9: Tất tần tật về sự kiện trong Javascript
 Chương 10: Regular expression cơ bản
 
 Chương11: Kiến thức bổ sung và tạm kết phần 1
+
+*JS questions:* **[/lydiahallie/javascript-questions/](https://github.com/lydiahallie/javascript-questions/blob/master/vi-VI/README-vi.md)**
