@@ -30,7 +30,7 @@
 
 `Hoisting`: là vấn đề khi khai báo biến, biến đc gọi ra trước khi đc khởi tạo --> ctr lỗi và dừng chạy.
 
-# Bài 6.5: Bổ sung kiến thức hoisting
+# Bài 6.5: Bổ sung kiến thức Hoisting
 
 * `const` và `let` ko bị hoisting 
 
@@ -48,5 +48,4 @@ console.log(a);
 var a; //-> Undefined, tương tự khi khai báo var ở trên console.log
 ```
 ==> `var a` đã được tự động đưa lên trên dù đã khai báo sau (hoisting) -> sẽ xảy ra những vấn đề ko mong muốn 
-
 

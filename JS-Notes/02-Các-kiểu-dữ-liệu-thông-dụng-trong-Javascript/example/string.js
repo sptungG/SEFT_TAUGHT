@@ -1,11 +1,4 @@
-Datatype: Number, String, Boolean, Undefined, Null
-
-# Bài 7: Giới thiệu kiểu dữ liệu `String`(Chuỗi)
-# Bài 8: Sử dụng string cơ bản
-
-* Thường là những chữ, số nằm trong dấu `" "` (nháy đôi, double quote),`' '`(nháy đơn, single quote), hoặc dấu **``**(backtick, template literal).
-
-```js
+{
 const name = "Tung";
 const job =  "FE developer"
 console.log(name);
@@ -13,20 +6,12 @@ console.log(typeof name);
 const newStr = " My name is Tung and I am a FE developer";
 const newStr2 = " My name is " + name + " and I am a " + job;   //---> rắc rối khi gặp nhiều biến, => backtick ``
 // ${variable}
-const newStr3 = `My name is ${name} and I am a ${job}
-                I love coding.`; //dùng khi đi kèm với biến.
+const newStr3 = `My name is ${name} and I am a ${job}`; //dùng khi đi kèm với biến.
 console.log(newStr3);
-```
 
-# Bài 9: `index` và `length` trong string cần nắm
-
-* `index` là vị trí của tùng kí tự trong chuỗi, bao gồm cả khoảng trắng.
-* `length` số các index
-
-# Bài 10: Các phương thức trong string phần 1
-# Bài 11: Các phương thức trong string phần 2
-
-```js
+console.log(newStr3.length); //39, index 0-38
+}
+{
 // -------------------- 1 --------------------
 //split: cắt String
 const myStr = "Frontend Developer"
@@ -50,9 +35,8 @@ console.log(myStr.includes("end")); //true
 //indexOf: in ra vị trí xuất hiện đầu tiên của chữ đc nhập vào trong String
 console.log(myStr.indexOf("e")); //5
 //lastIndexOf: in ra vị trí xuất hiện cuối của chữ đc nhập vào trong String
-console.log(myStr.lastIndexOf("e"));
-```
-```js
+console.log(myStr.lastIndexOf("e")); //16
+
 // -------------------- 2 --------------------
 //replace: thay thế
 console.log(myStr.replace("Developer","Designer")); //Frontend Designer
@@ -75,35 +59,15 @@ console.log(myStr.slice(999)); //
 //trim: loại bỏ khoảng trống ở đầu và cuối
 //trimEnd
 //trimStart
-const myStr1 = "    Frontend Developer D     "
+const myStr1 = "    Frontend Developer D     ";
 console.log(myStr1.trim()); //Frontend Developer D
 console.log(myStr1.trimStart()); //Frontend Developer D     
 console.log(myStr1.trimEnd()); //    Frontend Developer D
 
 //charAt(num): in ra chữ ở vị trí num
 console.log(myStr.charAt(2)); //o
-```
-# Bài 12: Phân biệt substr và substring
 
-```js
-    /**
-     * Returns the substring at the specified location within a String object.
-     * @param start The zero-based index number indicating the beginning of the substring.
-     * @param end Zero-based index number indicating the end of the substring. The substring includes the characters up to, but not including, the character indicated by end.
-     * If end is omitted, the characters from start through the end of the original string are returned.
-     */
-    substring(start: number, end?: number): string;
-```
-```js
-    /**
-     * Gets a substring beginning at the specified location and having the specified length.
-     * @param from The starting position of the desired substring. The index of the first character in the string is zero.
-     * @param length The number of characters to include in the returned substring.
-     */
-    substr(from: number, length?: number): string;
-```
-
-```js
+//Bài 12: Phân biệt substr và substring (hay bị nhầm lẫm).
 const myStr2 = "Frontend"
 //substr: lấy ra 1 phần của chuỗi(String)
 //substr(index, length); vị trí, số lượng kí tự muốn lấy.
@@ -111,6 +75,15 @@ console.log(myStr2.substr(1,5)); //ronte, vị trí 1 và lấy 5 kí tự
 //substring: lấy ra các kí tự của chuỗi(String)
 //substring(startIndex, endIndex);  
 console.log(myStr2.substring(1,5)); //ront, lấy kí tự từ vị trí 1 đến 5-1
-```
-
-# Bài 13: Sử dụng nhiều phương thức của string cùng lúc
+}
+{
+const myStr3 = "    Frontend Developer D     ";
+//Loại bỏ khoảng trống 2 bên, đưa tất cả về chữ thường, thay chữ 'Developer' thành 'Developer and Designer', repeat 2 lần
+console.log(
+    myStr3
+        .trim()
+        .replace("Developer","Developer and Designer")
+        .toLowerCase()
+        .repeat(2)
+);
+}
