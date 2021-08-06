@@ -149,7 +149,7 @@ console.log(spinner.innerText); //.....
 console.log(spinner.innerHTML); //.....<strong style="display: none;">Helloooo</strong>
 // parse
 spinner.innerHTML = `<div class="demo">Hello World</div>`;
-// -> truyền vào <div class="demo">Hello World</div> 
+// -> truyền vào <div class="demo">Hello World</div>
 ```
 
 # Bài 122-123: Các phương thức về class
@@ -244,6 +244,22 @@ console.log(h1.hasChildNodes()); //true
 
 # Bài 130: Phương thức insertAdjacentText
 
+```html
+<!-- beforebegin -->
+<h3>
+  <!-- afterbegin -->
+  <a href="#" class="link">demo</a>
+  <span class="span">
+    Lorem ipsum dolor.
+    <strong>Strong</strong>
+    <strong>Strongggg</strong>
+  </span>
+  <span class="span3"> Lorem ipsum </span>
+  <!-- beforeend -->
+</h3>
+<!-- afterend -->
+```
+
 ```js
 // * 1. element.insertAdjacentText(position, text)
 // chèn text vào 4 vị trí
@@ -287,7 +303,7 @@ const template = `
 <li class="item item5">5item</li>
 </ul>
 `;
-document.body.insertAdjacentHTML("beforeend",template);
+document.body.insertAdjacentHTML("beforeend", template);
 // -> làm nhiều
 ```
 
@@ -330,7 +346,7 @@ console.log(span.firstElementChild); //<strong>Strong</strong>
 console.log(span.lastChild); //#text
 console.log(span.lastElementChild); //<strong>Strongggg</strong>
 
-// ****** 6. 
+// ****** 6.
 // span.nextSibling: nếu có text và thẻ đằng sau, thì ưu tiên lấy text
 // span.previousSibling: nếu có text và thẻ đằng trước, thì ưu tiên lấy text
 ```
@@ -342,55 +358,169 @@ console.log(span.lastElementChild); //<strong>Strongggg</strong>
 # Bài 140: Các thuộc tính liên quan tới offset
 
 ```js
-
+// 1. offsetWidth: lấy độ rộng thực sự của box đó
+//    offsetHeight
+const boxed = document.querySelector(".boxed");
+console.log(boxed.offsetWidth); //200
+console.log(boxed.offsetHeight); //200
+//    offsetLeft: vị trí của nó so với bên trái
+//    offsetTop
+console.log(boxed.offsetLeft); //10, do đang đặt margin:10px
+console.log(boxed.offsetTop); //31, h3 ở trên, đẩy xuống 21px + margin:10px
+//    offsetParent: lấy ra phần tử cha
+console.log(boxed.offsetParent); //<body>...</body>
 ```
 
 # Bài 141: Các thuộc tính liên quan tới client
 
 ```js
-
+// 2. clientWidth, lấy độ rộng phần tử -border
+// clientHeight
+// clientLeft: vị trí của nó so với bên trái border
+// clientTop
+console.log(boxed.clientWidth); //190
+console.log(boxed.clientHeight); //190
+console.log(boxed.clientLeft); //5
+console.log(boxed.clientTop); //5
 ```
 
 # Bài 142: Các thuộc tính liên quan tới window
 
 ```js
-
+// 3. window.innerWidth
+// window.outerWidth
+// window.innerHeight: lấy chiều cao trong khung hiển thị web
+// window.outerHeight
+console.log(window.innerHeight);
+console.log(window.outerHeight);
+console.log(window.innerWidth);
+console.log(window.outerWidth);
 ```
 
 # Bài 143: Tìm hiểu getBoundingClientRect()
 
 ```js
-
+// 4. selector.getBoundingClientRect()
+// -> lấy ra vị trí-tọa độ, kích thước của phần tử
+console.log(boxed.getBoundingClientRect());
+// left, x: vị trí của khối so với bên trái
+// top: vị trí so với phía trên
+// bottom: chiều cao khối + top
+// right: độ rộng của khối + left
+// width:
+// height
+// => làm hiệu ứng con trỏ chuột (dựa vào tọa độ)
 ```
 
 # Bài 144: Sự khác nhau giữa NodeList và HTMLCollection
 
 ```js
+// NodeList vs HTMLCollection
+// Giống: có thể truy cập bằng index, length, loop
+//        là mảng nhưng ko p là mảng, ko sử dụng đc các phg thức push, pop, shift, map, filter,..
+// HTMLCollection: ko sử dụng đc forEach
+// NodeList: sử dụng đc forEach -> hay đc dùng hơn
+const li = document.getElementsByClassName("item");
+const li2 = document.querySelectorAll(".item");
+console.log(li); //HTMLCollection
+console.log(li2); //NodeList
 
+// li.forEach((item) => {
+//   console.log(item);//ERROR: li.forEach is not a function
+// });
+li2.forEach((item) => {
+  console.log(item); //OK
+});
+
+for (let i = 0; i < li.length; i++) {
+  console.log(li[i]); //OK
+}
 ```
 
 # Bài 145: Sự khác nhau giữa parentNode và parentElement
 
 ```js
-
+// parentNode vs parentElement
+// Node: node ở DOM tree, gồm cả textNode
+// Element: thẻ
+// parentElement: có thể null
+// parentNode: lấy chính nó, nếu ko có parent bao ngoài
+// document.documentElement -> lấy thẻ HTML
+console.log(document.documentElement.parentElement); //null
+console.log(document.documentElement.parentNode); //#document
 ```
 
 # Bài 146: Tìm hiểu document.title và document.head
 
 ```js
+// document.title và document.head
+// document.title: thay đổi cái title của html
+// document.head:
+console.log(document.title); //DOM
+document.title = "Javascript";
+console.log(document.title); //Javascript
 
+console.log(document.head); //<head>...</head>
+
+/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */
+const meta = document.createElement("meta");
+meta.setAttribute("name", "viewport");
+meta.setAttribute("content", "width=device-width, initial-scale=1");
+// document.head.appendChild(meta);
+
+const head1 = document.getElementsByTagName("head");
+head1[0].appendChild(meta);
+console.log(head1); //HTMLCollection [head]
 ```
 
 # Bài 147: Tìm hiểu thêm phương thức insertBefore
 
 ```js
-
+// insertBefore:
+// parentNode.insertBefore(newNode, existingNode)
+const ul = document.querySelector("ul");
+console.log(document.querySelector("h3").nextElementSibling);
+document.body.insertBefore(ul, document.querySelector("h3").nextElementSibling);
+// insertAdjacentElement
+// document.querySelector("h3").insertAdjacentElement("beforebegin", ul);
+// kết quả ko đổi
+// cái khác ở đấy:
+// insertAdjacentElement: chỉ insert đc vào 4 vị trí quanh existingNode
+// insertBefore: có thể chọn phần tử sau hoặc trước existingNode để insert
 ```
 
 # Bài 148: Tìm hiểu thêm phương thức replaceChild
 
 ```js
+// replaceChild
+// node.replaceChild(newNode, oldNode);
+const span = document.createElement("span");
+span.textContent = "abc";
+document.body.replaceChild(span, document.querySelector(".boxed"));
+```
 
+# Convert HTML collection, NodeList -> Array
+
+```js
+// Convert HTML collection, NodeList -> Array
+// *
+const li = document.getElementsByClassName("item");
+// * Array.from(HTML collection or NodeList)
+
+// ** [...HTML collection] ; [...NodeList]
+// li.forEach((item) => item); //ERROR: li.forEach is not a function
+[...li].forEach((item) => item);
+console.log(li); //HTMLCollection(5) [li.item.item1, li.item.item2, li.item.item3, li.item.item4, li.item.item5]
+```
+
+## Tổng hợp
+
+```js
+// html body head title -> duy nhất
+// html: document.documentElement
+// body: document.body
+// head: document.head
+// title: document.title
 ```
 
 ## _Chương 9: Tất tần tật về sự kiện trong Javascript_
