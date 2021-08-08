@@ -5,3 +5,11 @@ mixin ListItem(title = "This is default title", caption)
 				span.list-caption= caption
 			if block 
 				block
+mixin menuLink(title,	href = "#")
+	li.header-menu_item
+		a.header-menu_link(href= href)= title
+
+mixin headerBottomItem(number, title)
+	.header-bottom-item
+		span.header-bottom-number= number
+		span.header-bottom-text= title

@@ -1,1 +1,1 @@
-"use strict";
+"use strict";var menuToggle=document.querySelector(".header-toggle"),menu=document.querySelector(".header-menu");menuToggle.addEventListener("click",function(){menu.classList.toggle("is-expand")}),window.addEventListener("click",function(e){menu.contains(e.target)||e.target.matches(".header-toggle")||menu.classList.remove("is-expand")});
