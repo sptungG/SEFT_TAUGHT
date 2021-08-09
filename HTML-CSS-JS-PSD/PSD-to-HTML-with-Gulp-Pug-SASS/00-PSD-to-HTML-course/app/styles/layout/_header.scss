@@ -1,5 +1,5 @@
 .header {
-  min-height: 100rem;
+  min-height: 100vh;
   // background-repeat: no-repeat;
   // background-position: center;
   // background-size: cover;
@@ -16,7 +16,7 @@
       rgba($secondary-color, 0.8)
     ),
     url("..\\images\\header-bg.jpg") no-repeat center / cover;
-  color: #fff;
+    color: #fff;
   &-logo {
     font-size: 3rem;
     font-weight: bold;
@@ -40,7 +40,23 @@
     padding-top: 3rem;
     align-items: baseline;
   }
-
+  @include minWidth(768px) {
+    .header-toggle {
+      display: none;
+    }
+    &-menu {
+      display: flex;
+      &_item:not(:first-child) {
+        margin-left: 5rem;
+      }
+    }
+    &-menu_link {
+      display: inline-block;
+      color: #fff;
+      padding-bottom: 1rem;
+      border-bottom: 4px solid transparent;
+    }
+  }
   //
   &-content {
     padding-top: 17rem;
@@ -117,12 +133,12 @@
       font-weight: bold;
     }
     &-content {
-      margin-left: 1rem;
       text-transform: uppercase;
       font-size: 1.8rem;
     }
   }
-  @media screen and (max-width: 1023px) {
+
+  @include maxWidth(1023px) {
     min-height: unset;
     .header-bottom {
       margin-top: 10.5rem;
@@ -134,7 +150,7 @@
       font-size: 10rem;
     }
   }
-  @media screen and (max-width: 767px) {
+  @include maxWidth(767px) {
     .header-content-caption {
       font-size: 3rem;
       margin-bottom: 1rem;
@@ -200,23 +216,6 @@
     .header-toggle {
       display: inline-block;
       align-self: center;
-    }
-  }
-  @media screen and (min-width: 768px) {
-    .header-toggle {
-      display: none;
-    }
-    &-menu {
-      display: flex;
-      &_item:not(:first-child) {
-        margin-left: 5rem;
-      }
-    }
-    &-menu_link {
-      display: inline-block;
-      color: #fff;
-      padding-bottom: 1rem;
-      border-bottom: 4px solid transparent;
     }
   }
 }

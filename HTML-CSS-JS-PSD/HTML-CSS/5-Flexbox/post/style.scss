@@ -43,12 +43,7 @@ button {
   cursor: pointer;
 }
 
-@mixin flexbox(
-  $align: flex-start,
-  $justify: flex-start,
-  $direction: row,
-  $wrap: wrap
-) {
+@mixin flexbox($align: flex-start, $justify: flex-start, $direction: row, $wrap: wrap) {
   display: flex;
   align-items: $align;
   justify-content: $justify;

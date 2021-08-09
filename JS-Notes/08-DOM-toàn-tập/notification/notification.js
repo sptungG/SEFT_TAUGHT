@@ -13,11 +13,7 @@ function createNotification(title = "Welcome back!") {
   `;
   document.body.insertAdjacentHTML("afterbegin", template);
 }
-const randomTitle = [
-  "Welcome Back!",
-  "Today is a good day",
-  "What would you setup today?",
-];
+const randomTitle = ["Welcome Back!", "Today is a good day", "What would you setup today?"];
 let lastTitle;
 // createNotification();
 const timer = setInterval(function () {
@@ -26,6 +22,6 @@ const timer = setInterval(function () {
   // lấy ra random title trong mảng randomTitle
   const title = randomTitle[Math.floor(Math.random() * randomTitle.length)];
   // -> lần xuất hiện trc đó p khác với lần xuất hiện sau
-  if(lastTitle !== title) createNotification(title);  
+  if (lastTitle !== title) createNotification(title);
   lastTitle = title;
 }, 4000);

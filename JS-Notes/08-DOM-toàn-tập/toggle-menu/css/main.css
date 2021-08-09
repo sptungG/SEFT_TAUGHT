@@ -45,10 +45,10 @@ button {
   transform: translateX(100%);
   transition: all 0.25s linear;
 }
-.is-show{
+.is-show {
   transform: translateX(0);
 }
-.menu-link{
+.menu-link {
   display: block;
   padding: 20px 15px;
   color: #333;

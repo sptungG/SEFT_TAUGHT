@@ -1,0 +1,105 @@
+.about {
+  padding-top: 93px;
+  padding-bottom: 11rem;
+  background-color: #fff;
+  // &-list {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   margin-left: -3rem;
+  // }
+  // &-item {
+  //   margin-left: 3rem;
+  //   width: calc(33.33% - 3rem);
+  // }
+  // CSS-GRID
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 3rem;
+  }
+  &-item {
+    position: relative;
+    transition: all 0.2s linear;
+  }
+  &-item::after {
+    content: "";
+    @include absoluteFull();
+    background-color: $third-color;
+    z-index: -1;
+    transition: all 0.2s linear;
+  }
+  &-item:hover {
+    transform: translate(-1rem, -1rem);
+    .about-content {
+      opacity: 1;
+      visibility: visible;
+    }
+    &::after {
+      transform: translate(1rem, 1rem);
+    }
+  }
+  &-image {
+    width: 100%;
+    object-fit: cover;
+    height: 25rem;
+  }
+  &-content {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s linear;
+
+    @include absoluteFull();
+    z-index: 2;
+
+    background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8)), no-repeat center / cover;
+
+    text-transform: uppercase;
+    color: #fff;
+    @include flex(center, center, column);
+    //** xử lý vấn đề khi ng dùng nhập chữ quá dài
+    text-align: center;
+    padding: 2rem;
+  }
+  &-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  &-title {
+    //** xử lý vấn đề khi ng dùng nhập chữ quá dài
+    font-weight: bold;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    @include textClamp(2);
+  }
+  @include maxWidth(767px) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    // flexbox responsive
+    // &-item{
+    //   width: 100%;
+    //   margin-bottom: 2.5rem;
+    // }
+    // grid responsive
+    &-list {
+      // grid-template-columns: 100%;
+      // PROBLEm: UI trên đt ko tốt khi để scroll dọc
+      grid-row-gap: 2.5rem;
+
+      grid-auto-flow: column;
+      grid-template-columns: unset;
+      grid-auto-columns: 90%;
+
+      overflow-x: auto;
+      padding: 1rem;
+      //* snap theo chiều ngang x
+      scroll-snap-type: x mandatory;
+      //* tự động stop khi ng dùng scroll nhanh
+      scroll-snap-stop: always;
+      @include hideScroll();
+    }
+    &-item {
+      //* tự động căn start khi scroll
+      scroll-snap-align: start;
+    }
+  }
+}

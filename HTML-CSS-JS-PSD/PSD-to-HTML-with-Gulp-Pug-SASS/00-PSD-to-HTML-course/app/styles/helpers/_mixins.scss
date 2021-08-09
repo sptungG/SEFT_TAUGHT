@@ -1,55 +1,54 @@
 @mixin box-shadow($top, $left, $blur, $color, $inset: false) {
   @if $inset {
-    box-shadow:inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
   } @else {
     box-shadow: $top $left $blur $color;
   }
 }
 
 @mixin button($bgcolor: null, $color: null, $mw: null, $boxshadow: null) {
-	border: 0;
-	cursor: pointer;
-	padding: 1.5rem;
-	min-width: $mw;
-	color: $color;
-	background-color: $bgcolor;
-	text-transform: uppercase;
-	outline: none;
-	box-shadow: $boxshadow;
-	font-family: inherit;
-	transition: .2s;
+  border: 0;
+  cursor: pointer;
+  padding: 1.5rem;
+  min-width: $mw;
+  color: $color;
+  background-color: $bgcolor;
+  text-transform: uppercase;
+  outline: none;
+  box-shadow: $boxshadow;
+  font-family: inherit;
+  transition: 0.2s;
 }
 
-@mixin gradient($color1, $color2, $alpha1: 1, $alpha2: 1,$direction: to right) {
-	background-image: linear-gradient($direction, rgba($color1, $alpha1), rgba($color2, $alpha2));
+@mixin gradient($color1, $color2, $alpha1: 1, $alpha2: 1, $direction: to right) {
+  background-image: linear-gradient($direction, rgba($color1, $alpha1), rgba($color2, $alpha2));
 }
 
 @mixin size($width, $height: $width) {
-	width: $width;
-	height: $height;
+  width: $width;
+  height: $height;
 }
 
 @mixin centerPosition($pos) {
-	position: absolute;
-	@if $pos == "both" {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	} @else if $pos == "left" {
-		left: 50%;
-		transform: translateX(-50%);
-	} @else if $pos == "top" {
-		top: 50%;
-		transform: translateY(-50%);
-	}
-
+  position: absolute;
+  @if $pos == "both" {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if $pos == "left" {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if $pos == "top" {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 @mixin radius($all: null, $tl: $all, $tr: $all, $btl: $all, $btr: $all) {
-	border-top-left-radius: $tl;
-	border-top-right-radius: $tr ;
-	border-bottom-right-radius: $btr;
-	border-bottom-left-radius: $btl;
+  border-top-left-radius: $tl;
+  border-top-right-radius: $tr;
+  border-bottom-right-radius: $btr;
+  border-bottom-left-radius: $btl;
 }
 
 @mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
@@ -61,33 +60,85 @@
 }
 
 @mixin absolute($args...) {
-	@include position(absolute, $args...);
+  @include position(absolute, $args...);
 }
 
 @mixin relative($args...) {
-	@include position(relative, $args...);
+  @include position(relative, $args...);
 }
 
 @mixin fixed($args...) {
-	@include position(fixed, $args...);
+  @include position(fixed, $args...);
 }
 
 @mixin toRem($size) {
-	font-size: ($size / 16px ) * 1rem;
+  font-size: ($size / 16px) * 1rem;
 }
 
 @mixin minWidth($breakpoint) {
-	@media only screen and (min-width: $breakpoint) {	@content;	}
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
 }
 
 @mixin maxWidth($breakpoint) {
-	@media only screen and (max-width: $breakpoint) {	@content;	}
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
 }
 
-@mixin flex($direction: row, $content: null , $items: null, $wrap: null) {
-	display: flex;
-	flex-direction: $direction;
-	justify-content: $content;
-	align-items: $items;
-	flex-wrap: $wrap;
+// @mixin flex($direction: row, $content: null, $items: null, $wrap: null) {
+//   display: flex;
+//   flex-direction: $direction;
+//   justify-content: $content;
+//   align-items: $items;
+//   flex-wrap: $wrap;
+// }
+
+@mixin absoluteFull() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@mixin flex($items: stretch, $content: flex-start, $direction: row, $flex: flex, $wrap: null) {
+  align-items: $items;
+  justify-content: $content;
+  flex-direction: $direction;
+  display: $flex;
+  flex-wrap: $wrap;
+}
+
+@mixin hideScroll() {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+@mixin customScroll($color) {
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $light-gray-color;
+    border-radius: 2rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+    border-radius: 2rem;
+  }
+}
+// text clamp
+@mixin textClamp($rows: 1, $size: 100%) {
+  display: -webkit-box;
+  -webkit-line-clamp: $rows;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: $size;
+  max-width: $size;
+  white-space: pre-wrap;
+  word-break: break-word;
 }

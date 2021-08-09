@@ -1,10 +1,10 @@
-mixin ListItem(title = "This is default title", caption) 
-		li.list-item
-			h2.list-title= title 
-			if caption
-				span.list-caption= caption
-			if block 
-				block
+//- mixin ListItem(title = "This is default title", caption) 
+//- 		li.list-item
+//- 			h2.list-title= title 
+//- 			if caption
+//- 				span.list-caption= caption
+//- 			if block 
+//- 				block
 mixin menuLink(title,	href = "#")
 	li.header-menu_item
 		a.header-menu_link(href= href)= title
@@ -13,3 +13,34 @@ mixin headerBottomItem(number, title)
 	.header-bottom-item
 		span.header-bottom-number= number
 		span.header-bottom-text= title
+
+mixin blockBox(caption, title, desc)
+	.block-box
+		h3.block-box-caption= caption
+		h2.block-box-heading= title
+		if desc
+			p.block-box-desc= desc
+
+mixin aboutItem(src, title, iconClass, alt = "")
+	.about-item
+		img.about-image(src= src, alt= alt)
+		.about-content
+			i.about-icon(class= iconClass)
+			span.about-title= title
+
+mixin serviceItem(src, title, desc)
+	.service-item 
+		img.service-item-img(src= src)
+		.service-item-info 
+			h3.service-item-title= title  
+			if desc
+				p.service-item-desc= desc
+
+mixin wedoItem(src, title, content, active="")
+	.wedo-item(class= active) 
+		.wedo-item-header 
+			img.wedo-item-icon(src= src)
+			h3.wedo-item-title= title 
+			i.fa.fa-angle-up.wedo-item-arrow
+		.wedo-item-content
+			.wedo-item-text= content 
