@@ -10,13 +10,9 @@
   //   ),
   //   url("..\\images\\header-bg.jpg");
   // Rut gon:
-  background: linear-gradient(
-      to bottom,
-      rgba($primary-color, 0.8),
-      rgba($secondary-color, 0.8)
-    ),
+  background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8)),
     url("..\\images\\header-bg.jpg") no-repeat center / cover;
-    color: #fff;
+  color: #fff;
   &-logo {
     font-size: 3rem;
     font-weight: bold;
@@ -99,6 +95,7 @@
     margin-top: 15.5rem;
     padding-bottom: 2.5rem;
     display: flex;
+    margin-left: -3rem;
     // flex-wrap: wrap;
     &-item {
       position: relative;
@@ -135,6 +132,7 @@
     &-content {
       text-transform: uppercase;
       font-size: 1.8rem;
+      margin-left: 1rem;
     }
   }
 
@@ -161,11 +159,13 @@
       padding-bottom: 3rem;
     }
     .header-bottom-content {
-      display: none;
+      display: block;
+      font-size: 1.1rem;
     }
     .header-bottom-item {
-      text-align: center;
-      padding-top: 1.5rem;
+      // text-align: center;
+      padding-left: 0.5rem;
+      padding-top: 1rem;
     }
     .header-bottom-item::before {
       width: 35%;
@@ -178,6 +178,7 @@
     }
     .header-menu {
       position: fixed;
+      border-radius: 2rem 0 0 2rem;
       right: 0;
       top: 0;
       bottom: 0;
@@ -216,6 +217,7 @@
     .header-toggle {
       display: inline-block;
       align-self: center;
+      font-size: 2.5rem;
     }
   }
 }

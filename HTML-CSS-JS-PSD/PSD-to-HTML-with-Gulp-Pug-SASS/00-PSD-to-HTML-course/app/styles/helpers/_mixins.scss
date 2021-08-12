@@ -142,3 +142,63 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+@mixin hoverEffect($itemClass, $contentClass, $transform: "true") {
+  #{$itemClass} {
+    position: relative;
+    transition: all 0.2s linear;
+    z-index: 1;
+    will-change: transform;
+    #{$contentClass} {
+      @include absoluteFull();
+      @include flex(center, center, column);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s linear;
+      background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8)),
+        no-repeat center / cover;
+      // color: #fff;
+      z-index: 2;
+    }
+    @if $transform == "true" {
+      &::after {
+        content: "";
+        @include absoluteFull();
+        background-color: $third-color;
+        z-index: -1;
+        transition: all 0.2s linear;
+        will-change: transform;
+      }
+      &:hover {
+        transform: translate(-1rem, -1rem);
+        &::after {
+          transform: translate(1rem, 1rem);
+        }
+      }
+    }
+    &:hover {
+      #{$contentClass} {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+@mixin touchSlider($width: 80%, $gap: 2.5rem, $padding: 1rem) {
+  display: grid !important;
+  justify-content: flex-start !important;
+  grid-auto-columns: $width;
+  grid-template-columns: unset;
+  grid-column-gap: $gap;
+  overflow-x: auto;
+  padding: $padding;
+  grid-auto-flow: column;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  @include hideScroll();
+  & > * {
+    scroll-snap-align: center;
+    width: auto;
+  }
+}

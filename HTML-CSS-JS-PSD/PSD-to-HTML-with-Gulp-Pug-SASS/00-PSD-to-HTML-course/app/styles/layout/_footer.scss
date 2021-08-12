@@ -1,0 +1,151 @@
+.footer {
+  &-top {
+    padding: 8rem 0 7rem;
+    @include flex(stretch, space-between);
+  }
+  &-column {
+    width: calc(25% - 2.5rem);
+    &:first-child {
+      width: calc(40% - 2.5rem);
+    }
+    &:nth-child(2) {
+      width: calc(35% - 2.5rem);
+    }
+  }
+  &-heading {
+    text-transform: uppercase;
+    color: $title-color;
+    height: 4rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 2rem;
+    &--logo {
+      color: $text-color;
+      font-size: 4.6rem;
+      text-transform: none;
+      color: $dark-gray-color;
+    }
+  }
+  &-desc {
+    font-style: normal;
+    margin-bottom: 4.5rem;
+    margin-top: 2rem;
+  }
+  &-follower {
+    color: $title-color;
+    strong {
+      font-weight: bold;
+      font-size: 1.8rem;
+    }
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid $border-color;
+  }
+  &-social {
+    @include flex(center);
+    margin-bottom: 4rem;
+  }
+  &-social-icon {
+    margin-left: 2rem;
+    color: $third-color;
+    font-size: 2rem;
+  }
+  &-form {
+    width: 100%;
+    max-width: 38rem;
+    @include flex();
+  }
+  &-form-input {
+    padding: 1.5rem;
+    font-family: $secondary-font;
+    font-style: italic;
+    font-size: 1.5rem;
+    border: 1px solid $border-color;
+    border-right: 0;
+    background-color: #fff;
+    width: 100%;
+  }
+  &-form-button {
+    border: none;
+    padding: 1.5rem 3.5rem;
+    background-color: $third-color;
+    font-weight: bold;
+    color: #fff;
+    flex-shrink: 0;
+    font-size: 1.4rem;
+  }
+  &-blog {
+    @include flex(center);
+    margin-bottom: 3rem;
+  }
+  &-blog-img {
+    width: 12rem;
+    height: 8rem;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  &-blog-info {
+    padding-left: 2rem;
+  }
+  &-blog-title {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin-bottom: 1.2rem;
+    color: $title-color;
+    @include textClamp(2);
+  }
+  &-images {
+    @include flex(stretch, flex-start, row, flex, wrap);
+    margin-left: -2px;
+    margin-bottom: 2rem;
+  }
+  &-img {
+    width: calc(33.33% - 2px);
+    margin-left: 2px;
+    margin-bottom: 2px;
+    padding-bottom: 33.33%;
+    height: 0;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &-images-more {
+    color: $title-color;
+  }
+  &-bottom {
+    text-align: center;
+    padding: 2.5rem 0;
+    border-top: 1px solid $border-color;
+    span {
+      color: $primary-color;
+      font-weight: bold;
+    }
+  }
+  @include maxWidth(1023px) {
+    &-top {
+      display: block;
+      padding: 4rem 0 3rem;
+    }
+    &-column:not(:nth-child(99)) {
+      width: 100%;
+      margin-bottom: 3rem;
+    }
+    &-column:last-child{
+      margin-bottom: 0;
+    }
+  }
+  @include maxWidth(479px){
+    &-form-button{
+      padding: 1.5rem;
+    }
+  }
+}

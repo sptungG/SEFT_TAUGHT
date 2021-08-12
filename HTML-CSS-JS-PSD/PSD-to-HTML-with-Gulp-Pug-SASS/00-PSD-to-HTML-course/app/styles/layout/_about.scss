@@ -17,45 +17,14 @@
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 3rem;
   }
-  &-item {
-    position: relative;
-    transition: all 0.2s linear;
-  }
-  &-item::after {
-    content: "";
-    @include absoluteFull();
-    background-color: $third-color;
-    z-index: -1;
-    transition: all 0.2s linear;
-  }
-  &-item:hover {
-    transform: translate(-1rem, -1rem);
-    .about-content {
-      opacity: 1;
-      visibility: visible;
-    }
-    &::after {
-      transform: translate(1rem, 1rem);
-    }
-  }
   &-image {
     width: 100%;
     object-fit: cover;
     height: 25rem;
   }
   &-content {
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s linear;
-
-    @include absoluteFull();
-    z-index: 2;
-
-    background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8)), no-repeat center / cover;
-
     text-transform: uppercase;
     color: #fff;
-    @include flex(center, center, column);
     //** xử lý vấn đề khi ng dùng nhập chữ quá dài
     text-align: center;
     padding: 2rem;
@@ -103,3 +72,4 @@
     }
   }
 }
+@include hoverEffect(".about-item", ".about-content");
