@@ -17,9 +17,9 @@
 // click
 const button = document.querySelector(".button");
 // *
-// button.addEventListener("click", function () {
-//   console.log("Click me");
-// });
+button.addEventListener("click", function () {
+  console.log("Click me");
+});
 // **
 function handleClick() {
   console.log("Click Button");
@@ -30,38 +30,115 @@ button.addEventListener("click", handleClick);
 
 # Bài 151: Bubbling trong click
 
+```html
+<button class="button">
+  <span>Button</span>
+</button>
+```
+
 ```js
 // Bubbling: nổi bọt
-// sự kiện click ,chạy từ trong ra ngoài
+// khi phần tử có nhiều sự kiện
+const button = document.querySelector(".button");
 const span = document.querySelector("span");
-// span.addEventListener("click", function () {
-//   console.log("Click Span");
-// });
 
-// Ngăn chạn nổi bọt? -> e.stopPropagation();
+span.addEventListener("click", function () {
+  console.log("Click Span");
+});
+button.addEventListener("click", function () {
+  console.log("Click Button");
+});
+// khi mà click vào span thì đồng thời click vào cả button
+// sự kiện click ,chạy từ trong ra ngoài
+// -> Click Span
+// -> Click Button
+
+//✅ Ngăn chạn nổi bọt? -> e.stopPropagation();
 span.addEventListener("click", function (e) {
   e.stopPropagation();
   console.log("Click Span");
 });
+// -> Click Span
+```
 
+```html
+<button class="button">
+  <span>Button</span>
+</button>
+```
+
+```js
 // PROBLEM: 2 event click -> ra cả 2
-span.addEventListener("click", function (e) {
+span.addEventListener("click", function () {
   // e.stopPropagation();
+  console.log("Click Span");
+});
+span.addEventListener("click", function () {
+  console.log("Click Span 2");
+});
+// -> Click Span
+// -> Click Span2
+```
+
+```js
+// Khắc phục -> dùng e.stopImmediatePropagation() ở sự kiện trước
+span.addEventListener("click", function (e) {
   e.stopImmediatePropagation();
   console.log("Click Span");
 });
 span.addEventListener("click", function () {
   console.log("Click Span 2");
 });
+// -> Click Span
 ```
 
 # Bài 152: Capturing trong click
 
+```html
+<body>
+  <button class="button">
+    <span>Button</span>
+  </button>
+</body>
+```
+
+```js
+// *** Bubbling
+span.addEventListener("click", function () {
+  console.log("Click Span");
+});
+button.addEventListener("click", function () {
+  console.log("Click Button");
+});
+document.body.addEventListener("click", function () {
+  console.log("Click Body");
+});
+// -> Click Span
+// -> Click Button
+// -> Click Body
+```
+
 ```js
 // *** Capturing: ngược lại với Bubbling, từ ngoài vào trong
+// => selector.addEventListener("eventName", handler(function), [optional]);
+// optional là 1 Object
 const capturing = {
   capture: true,
 };
+span.addEventListener(
+  "click",
+  function () {
+    console.log("Click Span");
+  },
+  capturing
+);
+button.addEventListener(
+  "click",
+  function () {
+    console.log("Click Button");
+  },
+  capturing
+);
 document.body.addEventListener(
   "click",
   function () {
@@ -69,28 +146,49 @@ document.body.addEventListener(
   },
   capturing
 );
-// Click Body
-// Click Span
+// -> Click Body
+// -> Click Button
+// -> Click Span
 ```
 
 # Bài 153: Sự khác nhau giữa target và currentTarget
 
+```html
+<body>
+  <button class="button">
+    <span>Button</span>
+  </button>
+</body>
+```
+
 ```js
+// target và currentTarget xuất hiện khi gọi sự kiện
 button.addEventListener("click", function (e) {
   console.log("event.target " + e.target);
-  console.log("event.currentTarget " + e.currentTarget);
-  // event.target [object HTMLSpanElement]
-  // event.currentTarget [object HTMLButtonElement]
+  // -> event.target [object HTMLSpanElement]
 
+  console.log("event.currentTarget " + e.currentTarget);
+  // -> event.currentTarget [object HTMLButtonElement]
+
+  // Click vào button -> (console 2 cái button)   <button class="button"> <span>Button</span> </button>
+  // Click vào Span -> <span>Button</span>
+  //                -> <button class="button"> <span>Button</span> </button>
+  // =>
   // event.target: chọn chính xác phần tử element click tới
-  // event.currentTarget: chọn phần tử mình click
+  // event.currentTarget: chọn phần tử mình click, ko quan tâm thẻ bên trong
 });
 ```
 
 # Bài 154: preventDefault() để làm gì ?
 
+```html
+<a href="http://evondev.com" class="link">evondev.com</a>
+```
+
 ```js
-// event.preventDefault() -> ngăn chận hành vi mục đích nào đó
+// khi click vào thẻ a thì sẽ mặc định load sang 1 trang web khác
+// -> khi muốn ko load nữa, hoặc thực hiện hành động khác
+// event.preventDefault() -> ngăn chặn hành vi mục đích nào đó
 const link = document.querySelector(".link");
 link.addEventListener("click", function (e) {
   e.preventDefault(); //-> ngăn chặn hành vi mặc định,
@@ -101,7 +199,60 @@ link.addEventListener("click", function (e) {
 
 # Bài 155: Bài tập `Random background color`
 
+```html
+<body>
+  <button class="change">Change Color</button>
+</body>
+```
+
+```js
+const button = document.querySelector(".change");
+button.addEventListener("click", handleColor);
+const colors = ["#ffa400", "#00aefd", "#07a787", "#e74c3c"];
+function handleColor(params) {
+  console.log(colors[Math.floor(Math.random() * colors.length)]);
+  // document.body.setAttribute("style", "background-color: red");
+  document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+}
+```
+
 # Bài 156: Bài tập `Counter`
+
+```html
+<body>
+  <div class="counter">
+    <button class="counter-decrease">
+      <i class="fa fa-minus"></i>
+    </button>
+    <h1 class="counter-number">0</h1>
+    <button class="counter-increase">
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>
+  <script src="main.js"></script>
+</body>
+```
+
+```js
+const counterNumber = document.querySelector(".counter-number");
+const btnDecrease = document.querySelector(".counter-decrease");
+const btnIncrease = document.querySelector(".counter-increase");
+let counterValue = parseInt(counterNumber.textContent);
+
+btnIncrease.addEventListener("click", function () {
+  if (counterValue >= 10) return 10;
+  counterValue++;
+  console.log(counterValue);
+  counterNumber.textContent = counterValue;
+});
+
+btnDecrease.addEventListener("click", function () {
+  if (counterValue <= 0) return 0;
+  counterValue--;
+  console.log(counterValue);
+  counterNumber.textContent = counterValue;
+});
+```
 
 # Bài 157: Tìm hiểu object style
 
