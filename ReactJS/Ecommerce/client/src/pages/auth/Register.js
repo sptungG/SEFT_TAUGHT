@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { auth } from "../../firebase";
+
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const Register = () => {
   const [email, setEmail] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const config = {
@@ -17,6 +20,7 @@ const Register = () => {
     // clear State
     setEmail("");
   };
+
   const registerForm = () => (
     <form onSubmit={handleSubmit}>
       <input type="email" className="form-control mt-5" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
@@ -25,6 +29,7 @@ const Register = () => {
       </button>
     </form>
   );
+
   return (
     <div className="container p-5">
       <div className="row">
@@ -37,4 +42,5 @@ const Register = () => {
     </div>
   );
 };
+
 export default Register;
