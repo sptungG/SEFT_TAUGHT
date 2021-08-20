@@ -2,7 +2,7 @@
 
 `npx create-react-app client`
 
-![react-client](..\images\img-react-client.png)
+![react-client](../images/img-react-client.png)
 
 `cd client`
 
@@ -159,7 +159,7 @@ _Bootstrap Material:_
 
 # 10. Ant Design Icons
 
-![react-client](..\images\img--antd.png)
+![react-client](../images/img--antd.png)
 
 ```js
 // Header.js
