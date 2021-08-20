@@ -13,6 +13,7 @@ const Register = () => {
       url: "http://localhost:3000/register/complete",
       handleCodeInApp: true,
     };
+
     await auth.sendSignInLinkToEmail(email, config);
     toast.success(`Email is send to ${email}. Click the link to complete your registration.`);
     // Save email to local storage
