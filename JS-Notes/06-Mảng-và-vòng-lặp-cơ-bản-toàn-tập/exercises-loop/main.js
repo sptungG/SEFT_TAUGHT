@@ -1,22 +1,6 @@
 // 1. cho 1 mảng gồm nhiều giá trị [""," ",1,0,100,false,null,true,undefined,"js",[1,2,3],[],{},NaN]. Viết ctr loại bỏ giá trị falsy ra khỏi mảng null, "", undefined, NaN, false, 0
 // 2. cho 1 mảng phức tạp [[1,2,3,[false,null]],[1,5,6,["js"]], [888,99,[777]]]. và kết quả mong muốn là [1,2,3,false,null,1,5,6,"js",888,99,777]
-const arr = [
-  2,
-  "",
-  " ",
-  1,
-  0,
-  100,
-  false,
-  null,
-  true,
-  undefined,
-  "js",
-  [1, 2, 3],
-  [],
-  {},
-  NaN,
-];
+const arr = [2, "", " ", 1, 0, 100, false, null, true, undefined, "js", [1, 2, 3], [], {}, NaN];
 // new Boolean
 const filterFalsy = arr.filter((item) => Boolean(item));
 console.log(filterFalsy); // [2, " ", 1, 100, true, "js", [1, 2, 3], [], {}];
@@ -41,9 +25,7 @@ function reverseNumber(number) {
   // join("")
   // parseInt
   // * Math.sign(number)
-  return (
-    parseInt(number.toString().split("").reverse().join("")) * Math.sign(number)
-  );
+  return parseInt(number.toString().split("").reverse().join("")) * Math.sign(number);
 }
 console.log(reverseNumber(-12345));
 //4. viết ctr fizzBuzz, với đầu vào là 1 số nguyên kiểm tra từ 1 đến số nguyên đó
@@ -91,12 +73,7 @@ function unique(array) {
   return result.sort((a, b) => (a > b ? 1 : -1));
   // C2: -> Nâng cao
 }
-console.log(
-  unique([
-    1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 4, 45, 5, 7, 7, 7, 6, 6, 6, 8, 8, 8, 9, 9,
-    9, 10,
-  ])
-);
+console.log(unique([1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 4, 45, 5, 7, 7, 7, 6, 6, 6, 8, 8, 8, 9, 9, 9, 10]));
 // 7. Viết function xử lí 1 mảng lớn thành nhiều mảng con dựa vào số nguyên đầu vào
 // ([1,2,3,4,5],2) -> [1,2],[3,4],[5]
 function splitArray(array, number) {
@@ -116,3 +93,5 @@ console.log(splitArray([1, 2, 3, 4, 5], 2));
 // index = 0, number = 2 -> array.slice(0,2) -> [1,2]
 // index = 2, number = 4 -> array.slice(2,4) -> [3,4]
 // index = 4, number = 6 -> array.slice(4,6) -> [5]
+
+

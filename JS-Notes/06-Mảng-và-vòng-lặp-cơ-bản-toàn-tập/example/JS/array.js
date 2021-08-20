@@ -48,15 +48,15 @@ console.log(students); //(5) ["evondev", "tuan", "name", "thanh", "trung"]
 console.log("------array.slice------");
 // slice() -> tạo ra copy của mảng ban đầu
 const animals = ["tiger", "lion", "horse", "elephant"];
-// * slice() -> tạo mảng copy y hệt
+// * slice()
 const animal2 = animals.slice();
 console.log(animal2); //(4) ["tiger", "lion", "horse", "elephant"]
-// ** slice(start): vị trí index trong mảng
+// ** slice(start)
 const animal3 = animals.slice(1);
 console.log(animal3); //(3) ["lion", "horse", "elephant"]
 // slice(-1) -> ["elephant"]
 // slice(-2) -> (2) ["horse", "elephant"]
-// *** slice(start, end); start,end: vị trí bắt đầu, kết thúc -> sao chép từ start tới end-1
+// *** slice(start, end);
 const animal4 = animals.slice(1, 3);
 console.log(animal4); //(2) ["lion", "horse"]
 // ------------------------------- -------------------------------
@@ -80,6 +80,9 @@ console.log(pets); //(4) ["dinasour", "mouse", "bird", "dragon"]
 // ------------------------------- -------------------------------
 console.log("------array.sort------");
 // sort: sắp xếp các phần tử trong mảng theo chuẩn unicode-16
+const months = ["March", "Jan", "Feb", "Dec"];
+console.log(months.sort()); // ["Dec", "Feb", "Jan", "March"]
+
 const random = [10, 2, 200, 100, 1999, 1, 1000];
 console.log(random.sort()); //(6) [1, 10, 100, 1000, 1999, 2, 200]
 // sort
@@ -123,26 +126,26 @@ console.log(random4); //(7) [1999, 1000, 200, 100, 10, 2, 1]
 // ------------------------------- -------------------------------
 console.log("------array.map------");
 // duyệt qua từng phần tử trong mảng -> trả ra 1 mảng mới.
-//.map(callback(value,index,array))
-const list = [1, 2, 3, 4, 5, 6];
-// yêu cầu: trả ra 1 mảng mới với giá trị x2
-const listDouble = list.map((value, index, array) => {
-  // (value < 5 ? (value > 3 ? value*3:value) : value*2)
-  if (value < 5) {
-    if (value > 3) {
-      return value * 3;
+// .map(callback(value,index,array))
+  const list = [1, 2, 3, 4, 5, 6];
+  // yêu cầu: trả ra 1 mảng mới với giá trị x2
+  const listDouble = list.map((value, index, array) => {
+    // (value < 5 ? (value > 3 ? value*3:value) : value*2)
+    if (value < 5) {
+      if (value > 3) {
+        return value * 3;
+      }
+      return value;
     }
-    return value;
-  }
-  return value * 2;
-});
-console.log(list);
-console.log(listDouble); //[1, 2, 3, 12, 10, 12]
+    return value * 2;
+  });
+  console.log(list);
+  console.log(listDouble); //[1, 2, 3, 12, 10, 12]
 // ------------------------------- -------------------------------
 console.log("------array.forEach------");
 // duyệt qua từng phần tử trong mảng nhưng ko trả ra mảng mới,ko thể dừng forEach nên ko có return
 // hay dùng khi làm việc với DOM, xử lý 1 cái gì đó ở trong mảng thôi mà ko cần return ra mảng mới
-//.forEach(callback(value,index,array))
+// .forEach(callback(value,index,array))
 const listTriple = list.forEach((value) => value * 3);
 console.log(listTriple); //undefined
 // ?: khác nhau giữa map và forEach
@@ -152,9 +155,10 @@ console.log(listTriple); //undefined
 // ------------------------------- -------------------------------
 console.log("------array.filter------");
 // sàng lọc các phần tử trong mảng thỏa mãn điều kiện nào đó
+const listt = [1, 22, 3, 4, 5, 6];
 //.filter(callback(value,index,array))
-const filterNumber = list.filter((element) => element > 3);
-console.log(list);
+const filterNumber = listt.filter((element) => element > 3);
+console.log(listt);
 console.log(filterNumber); //(3) [4, 5, 6]
 // ------------------------------- -------------------------------
 //?: khác nhau some và every

@@ -6,17 +6,19 @@
 // Array: mảng, lưu trữ danh sách, chứa các phần tử
 // 2 cách tạo mảng
 // * array literal
-const student1 = []; //dùng nhiều
+
+const student1 = [];
+
 // ** constructor
 const student2 = new Array();
 //Example: [0, false, undefined, "string", ["tung", 10, 11, ...],..]
 // [1,2,3,4,5] ["a", "b", "ssss"], [false, true]
 // empty array: []
 
-const students = ["evondev", "tuan", "name", "thanh", "trung"];
 // index: vị trí của phần tử (giá trị) trong mảng, bắt đầu từ 0
 // length: số lượng phần tử
 // truy xuất trong mảng student1[index]
+const students = ["an", "minh", "thai", "tung", "trung"];
 console.log(students[0]);
 console.log(students[5]); //undefined
 console.log(students[students.length - 1]); // lây phần tử cuối
@@ -43,7 +45,7 @@ console.log(students.lastIndexOf("evondev"));
 students.push("js");
 console.log(students); //(6) ["evondev", "tuan", "name", "thanh", "trung", "js"]
 // ****** unshift -> thêm phần tử vào đầu
-students.unshift("FE");
+students.upshift("FE");
 console.log(students); //(7) ["FE", "evondev", "tuan", "name", "thanh", "trung", "js"]
 // ******* pop() -> xóa phần tử cuối cùng trong mảng
 students.pop();
@@ -313,11 +315,11 @@ console.log(mergeArr1); //(6) [1, 2, 3, 4, 4, 5]
 
 ```js
 // Destructuring array
-const toys = ["ball", "sword", "arrow", "magic"];
-const a = toys[0];
-const b = toys[1];
-const c = toys[2];
-console.log(a, b, c); //ball sword arrow
+  const toys = ["ball", "sword", "arrow", "magic"];
+  const a = toys[0];
+  const b = toys[1];
+  const c = toys[2];
+  console.log(a, b, c); //ball sword arrow
 // PROBLEM: muốn lấy 3 giá trị thì cần tạo 3 cái biến -> code rất dài
 // -> destructuring
 // const [indexName, indexName, indexName ,....] = toys;
@@ -337,6 +339,7 @@ function demo(a, ...rest) {
 demo(1, 2, 3, 4, 5, 6);
 // 1
 // (5) [2, 3, 4, 5, 6]
+// students = ["an", "minh", "thai", "tung", "trung"];
 ```
 
 # Bài 78-79-80-81: Vòng lặp for cơ bản
