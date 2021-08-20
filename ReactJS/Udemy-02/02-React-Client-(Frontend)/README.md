@@ -46,7 +46,7 @@ serviceWorker.unregister();
 
 `npm i react-router-dom`
 
-![react-client](..\images\img-react-route.png)
+![react-client](../images/img-react-route.png)
 
 ```js
 //Login.js
