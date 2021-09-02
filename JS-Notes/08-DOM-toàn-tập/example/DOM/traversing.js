@@ -37,3 +37,4 @@ console.log(span.lastElementChild); //<strong>Strongggg</strong>
 // 6. 
 // span.nextSibling: nếu có text và thẻ đằng sau, thì ưu tiên lấy text
 // span.previousSibling: nếu có text và thẻ đằng trước, thì ưu tiên lấy text
+

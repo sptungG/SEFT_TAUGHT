@@ -66,7 +66,7 @@ const pets = ["dog", "cat", "bird", "dragon"];
 // * splice(start) ->
 // pets.splice(2);
 // console.log(pets); // (2) ["dog", "cat"]
-// ** splice(start,deleteCount); deleteCount: số phần tử muốn xóa
+// ** .splice(start,deleteCount); deleteCount: số phần tử muốn xóa
 console.log(pets);
 // pets.splice(1,2);
 // console.log(pets);
@@ -74,14 +74,17 @@ console.log(pets);
 // .splice(1,1) -> (3) ["dog", "bird", "dragon"]
 // .splice(0,1) -> (3) ["cat", "bird", "dragon"]
 // .splice(0,2) -> (2) ["bird", "dragon"]
-// *** splice(start, deleteCount, item1,item2,...), -> xóa và thay thế phần tử vào array ban đầu
-pets.splice(0, 2, "dinasour", "mouse");
-console.log(pets); //(4) ["dinasour", "mouse", "bird", "dragon"]
+  // .splice(start, deleteCount, item1,item2,...)
+  // -> xóa và thay thế phần tử vào array ban đầu
+  pets.splice(2, 0, "dinasour", "mouse");
+  console.log(pets); //(4) ["dinasour", "mouse", "bird", "dragon"]
 // ------------------------------- -------------------------------
 console.log("------array.sort------");
 // sort: sắp xếp các phần tử trong mảng theo chuẩn unicode-16
 const months = ["March", "Jan", "Feb", "Dec"];
 console.log(months.sort()); // ["Dec", "Feb", "Jan", "March"]
+months.splice(3, 1);
+console.log(months); // ["Dec", "Feb", "Jan"]
 
 const random = [10, 2, 200, 100, 1999, 1, 1000];
 console.log(random.sort()); //(6) [1, 10, 100, 1000, 1999, 2, 200]
