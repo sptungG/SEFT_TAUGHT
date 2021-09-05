@@ -1,1 +1,0 @@
-![IMAGE](post-mini.png)

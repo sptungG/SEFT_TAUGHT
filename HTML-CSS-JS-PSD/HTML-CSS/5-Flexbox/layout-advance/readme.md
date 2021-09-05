@@ -1,1 +1,0 @@
-![IMAGE](img12.png)
