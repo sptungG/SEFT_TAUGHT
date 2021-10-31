@@ -57,10 +57,10 @@
   <img src="https://img.shields.io/badge/Firebase-049ae6?style=flat-square&logo=Firebase&logoColor=ffca28" height="24" />
 </p>
 
-## [MindX-C4E](https://github.com/sptungG/C4EJS105-NgoVietTung)
+<!-- ## [MindX-C4E](https://github.com/sptungG/C4EJS105-NgoVietTung)
 <p align="left">
   <img src="https://img.shields.io/badge/HTML5-f06529?style=flat-square&logo=HTML5&logoColor=ebebeb" height="24" />&nbsp
   <img src="https://img.shields.io/badge/CSS3-1572b6?style=flat-square&logo=CSS3&logoColor=ebebeb" height="24" />&nbsp
   <img src="https://img.shields.io/badge/Javascript-323330?style=flat-square&logo=JavaScript&logoColor=f0db4f" height="24" />
-</p>
+</p> -->
 
