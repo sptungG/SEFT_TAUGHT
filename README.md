@@ -40,6 +40,11 @@
   <img src="https://img.shields.io/badge/React-61abcb?style=flat-square&logo=React&logoColor=ebebeb" height="24" />&nbsp
 </p>
 
+## [freeCodeCamp](https://www.freecodecamp.org/tungnv)
+<p align="left">
+  <img src="https://img.shields.io/badge/freeCodeCamp-0A0A23?style=flat-square&logo=freeCodeCamp&logoColor=ebebeb" height="24" />&nbsp
+  <img src="https://img.shields.io/badge/Javascript-323330?style=flat-square&logo=JavaScript&logoColor=f0db4f" height="24" />
+</p>
 
 ## [MindX-Web](https://github.com/sptungG/Web54-TungNV) 
 <p align="left">
